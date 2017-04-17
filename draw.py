@@ -102,7 +102,9 @@ class Draw:
             rects.append(tmp)
         self.ax.set_ylabel(self.title)
         self.ax.set_xticks(ind+bars/2.0*width)
-        self.fig.gca().set_ylim(kwargs.setdefault('y_start', 0), kwargs.setdefault('y_end', 1.2))
+        self.fig.gca().set_ylim(
+            kwargs.setdefault('y_start', 0),
+            kwargs.setdefault('y_end', 1.2))
         self.fig.gca().set_xlim(0, benches*3)
         self.ax.set_xticklabels(
             self.xaxis,
@@ -150,7 +152,9 @@ class Draw:
                 label=self.legends[i])
         self.ax.set_ylabel(self.title)
         self.ax.set_xticks(ind+bars/2.0*width+width/2.0)
-        self.fig.gca().set_ylim(kwargs.setdefault('y_start', 0), kwargs.setdefault('y_end', 1.2))
+        self.fig.gca().set_ylim(
+            kwargs.setdefault('y_start', 0),
+            kwargs.setdefault('y_end', 1.2))
         self.fig.gca().set_xlim(0, benches*3)
         self.ax.set_xticklabels(
             self.xaxis,
