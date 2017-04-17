@@ -1,11 +1,12 @@
 import brewer2mpl as b2m
+import seaborn as sns
 import matplotlib
 
 
-hatchs = ['--', 'x', '+', '\\\\', '.']
+hatchs = ['----', 'xxxx', '\\\\\\\\', '++++', '....']
 markers = ['o', 'v', '^', '<', '>', '8', 's', 'p', '*', 'h', 'H', 'D', 'd']
-colors = b2m.get_map('dark2', 'qualitative', 8).mpl_colors
-
+colors = sns.cubehelix_palette(8, gamma=2.1, start=.5, rot=-.75)
+colors = sns.diverging_palette(255, 133, l=60, n=9, center="dark")
 
 def to_scf(y, position):
     s = ""
@@ -30,17 +31,19 @@ def label_all(ax, rects, rot, percent, space, lim):
         if cord > lim:
             cord = lim
         if percent:
-            ax.text(rect.get_x() + rect.get_width()/2., cord + space,
-                    '%.2f\\%%' % float(height*100),
-                    rotation=rot,
-                    size=7,
-                    ha='center', va='top')
+            if height > lim:
+                ax.text(rect.get_x() + rect.get_width()/2., cord + space,
+                        '%.2f\\%%' % float(height*100),
+                        rotation=rot,
+                        size=7,
+                        ha='center', va='top')
         else:
-            ax.text(rect.get_x() + rect.get_width()/2., cord + space,
-                    '%.2f' % float(height),
-                    rotation=rot,
-                    size=7,
-                    ha='center', va='top')
+            if height > lim:
+                ax.text(rect.get_x() + rect.get_width()/2., cord + space,
+                        '%.2f' % float(height),
+                        rotation=rot,
+                        size=7,
+                        ha='center', va='top')
 
 
 
